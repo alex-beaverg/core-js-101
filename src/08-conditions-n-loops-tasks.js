@@ -515,8 +515,54 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const x = 'X';
+  const o = '0';
+  let checkXh = true;
+  let checkOh = true;
+  let checkXv = true;
+  let checkOv = true;
+  let checkXd1 = true;
+  let checkOd1 = true;
+  let checkXd2 = true;
+  let checkOd2 = true;
+  for (let i = 0; i < 3; i += 1) {
+    for (let j = 0; j < 3; j += 1) {
+      if (position[i][j] === x) checkXh *= true;
+      else checkXh *= false;
+      if (position[i][j] === o) checkOh *= true;
+      else checkOh *= false;
+      if (position[j][i] === x) checkXv *= true;
+      else checkXv *= false;
+      if (position[j][i] === o) checkOv *= true;
+      else checkOv *= false;
+    }
+    if (checkXh) return 'X';
+    if (checkOh) return '0';
+    if (checkXv) return 'X';
+    if (checkOv) return '0';
+    checkXh = true;
+    checkOh = true;
+    checkXv = true;
+    checkOv = true;
+    if (position[i][i] === x) checkXd1 *= true;
+    else checkXd1 *= false;
+    if (position[i][i] === o) checkOd1 *= true;
+    else checkOd1 *= false;
+    if (position[2 - i][i] === x) checkXd2 *= true;
+    else checkXd2 *= false;
+    if (position[2 - i][i] === o) checkOd2 *= true;
+    else checkOd2 *= false;
+  }
+  if (checkXd1) return 'X';
+  if (checkOd1) return '0';
+  if (checkXd2) return 'X';
+  if (checkOd2) return '0';
+  checkXd1 = true;
+  checkOd1 = true;
+  checkXd2 = true;
+  checkOd2 = true;
+  return undefined;
 }
 
 
